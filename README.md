@@ -28,10 +28,10 @@ A tool to minimize Tasmota scripts.
 
 ### Examples
 
-Minimize Tasmota script with default parameters, testscript%Y_%m_%d-%H_%M_%S.txt will be created.
+Minimize Tasmota script with default parameters, testscript%Y_%m_%d-%H_%M_%S.txt will be created.  
 `python tasmota_script_minimizer.py testscript.txt`
 
-Minimize Tasmota script with aggressivity=3, print a dictionary and minimized.txt will be created.
+Minimize Tasmota script with aggressivity=3, print a dictionary and minimized.txt will be created.  
 `python python tasmota_script_minimizer.py testscript.txt -o minimized.txt -a 3 -d 1`
 
 ## Version
