@@ -1,0 +1,124 @@
+>D
+; A smol test script to test the minimizer
+first_val=0.28
+second_val=22
+result=0
+para_a=11
+para_b=5
+m:array=0 10
+p:stats=9
+hello="hello world hello github"
+cnt=0
+num=0
+num2=0
+state=4
+svar="=#retsuba(para_a para_b)"
+mvar=0
+add=0
+mult=0
+a=0
+b=0
+rb=0
+sb=0
+
+>B
+
+para_a=7
+for cnt 0 16 2
+print %cnt%
+if ((cnt==6 and second_val==22) or cnt>=upsecs)
+then
+print %para_b% = %cnt%
+print if and or
+endif
+if cnt>= 6
+then
+print cnt >= 6
+endif
+next
+
+switch state
+case 4 
+print state 4
+case 5 print state 5
+ends
+
+=(svar)
+mvar=#addsub(5 8)
+print mvar %mvar% must be 13
+
+;para_a=upsecs
+
+=#resetval
+
+>S
+if ((para_a+4<upsecs) and (para_a+10>upsecs))
+then
+print Run subroutines
+result=#retsub(55)
+print result %result% must be 5.5
+=#square(11)
+endif
+stats=upsecs/10
+
+
+if stats>=2
+and stats<3
+or stats==4 {
+print stats:=%stats% must be >2 <3 ==4
+} else {
+stats=66
+}
+
+
+
+>F
+if rb>0
+then
+rb=0
+=#resetval
+;svars
+endif
+
+
+#resetval
+para_a=upsecs
+stats=0
+result=0
+first_val=0.1
+second_val=0.2
+array[1]=4
+array[2]=5
+result=array[1]+array[2]
+print resetval %result% must be 9
+
+#square(num)
+num=num*num
+print square %num% must be 121
+return num
+
+
+#retsub(num2)
+result=first_val*num2 ; this will work
+return result
+
+#retsuba(a b)
+mult=a*b
+print mult %mult% must be 35
+return mult
+
+#addsub(a b)
+add=a+b
+return add
+
+
+; Requires compiling with #define USE_SCRIPT_WEB_DISPLAY
+>W
+bu(rb "Set rb" "rb")bu(rb "Set" "Set")
+Uptime Seconds{m}%upsecs% s
+print %upsecs% %stats% %3stats%
+result %result% =#addsub(11 14)
+;>WS
+;bu(a "Reset" "Reset")
+;print %upsecs% %stats% %3stats%
+;result %result%
